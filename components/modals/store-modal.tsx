@@ -15,7 +15,7 @@ const formSchema = z.object({
 })
 
 export const StoreModal = () => {
-    const storeModal = useStoreModal()
+    const storeModal = useStoreModal();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
