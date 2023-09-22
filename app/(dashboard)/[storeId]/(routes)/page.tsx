@@ -1,3 +1,4 @@
+import { getTotalRevenue } from "@/actions/get-total-revenue";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
@@ -10,6 +11,8 @@ interface DashboardPageProps {
 }
 
 const DashboardPage: React.FC<DashboardPageProps> =async ({params}) => {
+    const totalRevenue = await getTotalRevenue(params.storeId);
+
     return (
         <div className="flex-col">
             <div className="flex-1 space-y-4 p-8 pt-6">
@@ -24,7 +27,7 @@ const DashboardPage: React.FC<DashboardPageProps> =async ({params}) => {
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">
-                            {formatter.format(99.98)}
+                            {formatter.format(totalRevenue)}
                         </div>
                     </CardContent>
                 </Card>
